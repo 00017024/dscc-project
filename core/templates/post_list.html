@@ -1,0 +1,7 @@
+<h2>Posts</h2>
+
+{% for post in object_list %}
+    <p>{{ post.title }}</p>
+{% empty %}
+    <p>No posts yet.</p>
+{% endfor %}
