@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}DSCC Blog{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="site-header">
+    <nav class="navbar">
+      <div class="nav-container">
+
+        <!-- Left: Site Name + Primary Links -->
+        <div class="nav-left">
+          <a href="/" class="site-name">DSCC<span class="site-name-accent">Blog</span></a>
+          <ul class="nav-links">
+            <li><a href="/" class="nav-link">Home</a></li>
+            <li><a href="/posts/" class="nav-link">Posts</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="/posts/create/" class="nav-link nav-link--create">+ Create Post</a></li>
+            {% endif %}
+          </ul>
+        </div>
+
+        <!-- Right: Auth Controls -->
+        <div class="nav-right">
+          {% if user.is_authenticated %}
+            <span class="nav-username">
+              <span class="username-dot"></span>{{ user.username }}
+            </span>
+            <a href="/accounts/logout/" class="btn btn--ghost">Logout</a>
+          {% else %}
+            <a href="/accounts/login/" class="btn btn--ghost">Login</a>
+            <a href="/accounts/register/" class="btn btn--primary">Register</a>
+          {% endif %}
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+
+      <!-- Mobile Drawer -->
+      <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/posts/">Posts</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="/posts/create/">+ Create Post</a></li>
+            <li class="mobile-divider"></li>
+            <li class="mobile-user">Signed in as <strong>{{ user.username }}</strong></li>
+            <li><a href="/accounts/logout/">Logout</a></li>
+          {% else %}
+            <li><a href="/accounts/login/">Login</a></li>
+            <li><a href="/accounts/register/">Register</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===================== MESSAGES ===================== -->
+  {% if messages %}
+  <div class="messages-wrapper">
+    <div class="container">
+      {% for message in messages %}
+        <div class="alert alert--{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- ===================== MAIN CONTENT ===================== -->
+  <main class="main-content">
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-brand">DSCC<span class="site-name-accent">Blog</span></span>
+        <p class="footer-copy">DSCC Coursework Project &mdash; &copy; {% now "Y" %}</p>
+        <div class="footer-line"></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== JS: Hamburger Toggle ===================== -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('is-open');
+      hamburger.classList.toggle('is-active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+  </script>
+
+</body>
+</html>
