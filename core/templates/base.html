@@ -12,7 +12,7 @@
 </head>
 <body>
 
-  <!-- ===================== NAVBAR ===================== -->
+  <!-- NAVBAR-->
   <header class="site-header">
     <nav class="navbar">
       <div class="nav-container">
@@ -68,7 +68,7 @@
     </nav>
   </header>
 
-  <!-- ===================== MESSAGES ===================== -->
+  <!-- MESSAGES -->
   {% if messages %}
   <div class="messages-wrapper">
     <div class="container">
@@ -79,14 +79,14 @@
   </div>
   {% endif %}
 
-  <!-- ===================== MAIN CONTENT ===================== -->
+  <!-- MAIN CONTENT -->
   <main class="main-content">
     <div class="container">
       {% block content %}{% endblock %}
     </div>
   </main>
 
-  <!-- ===================== FOOTER ===================== -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
@@ -97,7 +97,7 @@
     </div>
   </footer>
 
-  <!-- ===================== JS: Hamburger Toggle ===================== -->
+  <!-- JS: Hamburger Toggle -->
   <script>
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
