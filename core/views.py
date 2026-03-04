@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
-from .models import Post
+from .models import Post, Comment
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 
@@ -16,6 +16,21 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name = 'post_detail.html'
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        if request.user.is_authenticated:
+            content = request.POST.get("content")
+
+            if content:
+                Comment.objects.create(
+                    post=self.object,
+                    author=request.user,
+                    content=content
+                )
+
+        return redirect('post_detail', pk=self.object.pk)
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
