@@ -10,7 +10,7 @@
   --color-border:     #e8e4dc;
   --color-ink:        #1a1814;
   --color-ink-muted:  #6b6660;
-  --color-accent:     #c0392b;       /* deep editorial red */
+  --color-accent:     #c0392b;       
   --color-accent-dim: #e8d5d3;
   --color-nav-bg:     #ffffff;
 
@@ -27,7 +27,7 @@
   --transition: 0.2s ease;
 }
 
-/* ---------- Reset ---------- */
+/*Reset*/
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
@@ -48,7 +48,7 @@ a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 ul { list-style: none; }
 
-/* ---------- Container ---------- */
+/*Container*/
 .container {
   width: 100%;
   max-width: var(--max-w);
@@ -56,9 +56,7 @@ ul { list-style: none; }
   padding: 0 24px;
 }
 
-/* ============================================================
-   NAVBAR
-   ============================================================ */
+/*NAVBAR */
 .site-header {
   position: sticky;
   top: 0;
@@ -282,9 +280,7 @@ ul { list-style: none; }
   padding: 4px 8px;
 }
 
-/* ============================================================
-   FLASH MESSAGES
-   ============================================================ */
+/*FLASH MESSAGES */
 .messages-wrapper {
   padding: 12px 0 0;
 }
@@ -304,17 +300,13 @@ ul { list-style: none; }
 .alert--warning  { background: #fef9ec; border-color: #f39c12; color: #7d6008; }
 .alert--info     { background: #eaf4fb; border-color: #2980b9; color: #1a5276; }
 
-/* ============================================================
-   MAIN CONTENT
-   ============================================================ */
+/*MAIN CONTENT*/
 .main-content {
   flex: 1;
   padding: 48px 0 64px;
 }
 
-/* ============================================================
-   TYPOGRAPHY HELPERS  (child templates inherit these)
-   ============================================================ */
+/*TYPOGRAPHY HELPERS  (child templates inherit these)*/
 h1, h2, h3, h4, h5 {
   font-family: var(--font-display);
   font-weight: 700;
@@ -328,9 +320,7 @@ h3 { font-size: 1.35rem; }
 
 p { color: var(--color-ink-muted); line-height: 1.75; }
 
-/* ============================================================
-   CARDS  (reusable)
-   ============================================================ */
+/*CARDS  (reusable)*/
 .card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -345,9 +335,7 @@ p { color: var(--color-ink-muted); line-height: 1.75; }
   transform: translateY(-2px);
 }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
+/*FOOTER*/
 .site-footer {
   background: var(--color-ink);
   color: rgba(255,255,255,.55);
@@ -388,9 +376,7 @@ p { color: var(--color-ink-muted); line-height: 1.75; }
   opacity: 0.6;
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+/*RESPONSIVE*/
 @media (max-width: 768px) {
   .nav-links,
   .nav-right  { display: none; }

@@ -1,4 +1,4 @@
-# ---------- Stage 1: Builder ----------
+# Stage 1: Builder 
 FROM python:3.12-slim AS builder
 
 WORKDIR /app
@@ -12,7 +12,7 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir --user -r requirements.txt
 
 
-# ---------- Stage 2: Runtime ----------
+# Stage 2: Runtime
 FROM python:3.12-slim
 
 WORKDIR /app
